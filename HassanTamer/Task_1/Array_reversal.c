@@ -1,35 +1,25 @@
-/****************************************
-                                k=n
-This code calculates the sum : sigma(k!/k)
-                                k=1
-****************************************/
 #include <stdio.h>
-/*****************/
-unsigned long long getFacDiv_n(int Num);
-/*****************/
-unsigned long long result;
-unsigned long long series;
-/*****************/
+#include <stdlib.h>
+
 int main()
 {
-    unsigned int Term , iterator;
-    printf("Enter the number of terms : ");
-    scanf("%i",&Term);
-    for(iterator = 1 ; iterator <= Term ; iterator ++)
-    {
-        result = getFacDiv_n(iterator);
-        series += result;
+    int num, *arr, i, temp;
+    scanf("%d", &num);
+    arr = (int*) malloc(num * sizeof(int));
+    for(i = 0; i < num; i++) {
+        scanf("%d", arr + i);
     }
-    printf("The sum of the series = %llu\n");
+
+
+    /* Write the logic to reverse the array. */
+    for(i = 0 ; i<(num/2) ; i++)
+    {
+        temp = arr[i];
+        arr[i] = arr[num-i-1];
+        arr[num-i-1] = temp;
+    }
+
+    for(i = 0; i < num; i++)
+        printf("%d ", *(arr + i));
     return 0;
-}
-unsigned long long getFacDiv_n(int Num)
-{
-    unsigned long long FactorialDiv_n = 1;
-    unsigned int counter ;
-    for(counter = 1 ; counter < Num ; counter++)
-    {
-        FactorialDiv_n *= counter;
-    }
-    return FactorialDiv_n;
 }
