@@ -1,0 +1,41 @@
+#include <stdio.h>
+
+int max_of_four(int a, int b, int c, int d);
+
+
+int main() {
+    int a, b, c, d;
+    scanf("%d %d %d %d", &a, &b, &c, &d);
+    int ans = max_of_four(a, b, c, d);
+    printf("%d", ans);
+    
+    return 0;
+}
+
+int max_of_four(int a, int b, int c, int d)
+{
+     unsigned int arr[4]={a,b,c,d};
+     int cou1,cou2;
+     int x=0;
+     for(cou1=0 ; cou1 < 4 ; cou1++)
+     {
+         for(cou2=0 ; cou2 < 4 ; cou2++)
+         {
+             if(arr[cou1] >= arr[cou2])
+             {
+                 x=1;
+             }
+             else
+             {
+                 x=0;
+                 break;
+             }
+         }
+         if (x==1)
+         {
+             break;
+         }
+     }
+     return arr[cou1];
+ 
+}
